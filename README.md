@@ -1,24 +1,4 @@
-# README
-
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+# TwiLinks
+「TwiLinks」は、Twitterで見つけた気になる記事を後で見たい場合にURLを保存するのが手間、という問題を解決したいブックマーク管理サービスです。
+ユーザーは「いいね」したツイートに含まれるURLの一覧化ができ、
+Pocketとは違って、記事にアクセスすることなくTwitterで「いいね」するだけでURLが保存できる事が特徴です。
