@@ -30,4 +30,7 @@ group :development do
   gem "slim_lint"
   gem "slim-rails"
   gem "html2slim"
+  gem "rubocop", require: false
+  gem "rubocop-performance", require: false
+  gem "rubocop-rails", require: false
 end
