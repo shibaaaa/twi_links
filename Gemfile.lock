@@ -149,6 +149,13 @@ GEM
       unicode-display_width (>= 1.4.0, < 2.0)
     rubocop-ast (0.7.1)
       parser (>= 2.7.1.5)
+    rubocop-performance (1.8.1)
+      rubocop (>= 0.87.0)
+      rubocop-ast (>= 0.4.0)
+    rubocop-rails (2.8.1)
+      activesupport (>= 4.2.0)
+      rack (>= 1.1)
+      rubocop (>= 0.87.0)
     ruby-progressbar (1.10.1)
     sass-rails (6.0.0)
       sassc-rails (~> 2.1, >= 2.1.1)
@@ -214,6 +221,9 @@ DEPENDENCIES
   pg (>= 0.18, < 2.0)
   puma (~> 4.1)
   rails (~> 6.0.3, >= 6.0.3.3)
+  rubocop
+  rubocop-performance
+  rubocop-rails
   sass-rails (>= 6)
   slim-rails
   slim_lint
