@@ -21,6 +21,7 @@ group :development, :test do
 
   # Not default
   gem "rspec-rails", "~> 4.0.1"
+  gem "factory_bot_rails"
 end
 
 group :development do
