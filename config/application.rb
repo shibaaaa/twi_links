@@ -33,5 +33,6 @@ module Twilinks
     config.i18n.default_locale = :ja
     # Don't generate system test files.
     config.generators.system_tests = nil
+    config.generators.template_engine = :slim
   end
 end
