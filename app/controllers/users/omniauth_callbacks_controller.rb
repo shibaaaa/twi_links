@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class OmniauthCallbacksController < Devise::OmniauthCallbacksController
+class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   def twitter
     callback_from :twitter
   end
