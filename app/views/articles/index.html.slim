@@ -1,2 +1,10 @@
-h1 Articles#index
-p Find me in app/views/articles/index.html.slim
+h1 記事一覧
+
+- @articles.each do |article|
+  ul
+    li = article.tweet_date
+    li = article.url
+    li = article.tweet_user_meta
+    li = article.tweet_url
+
+h2 終わり
