@@ -29,6 +29,9 @@ group :development, :test do
   # Not default
   gem "rspec-rails", "~> 4.0.1"
   gem "factory_bot_rails"
+  gem "capybara"
+  gem "selenium-webdriver"
+  gem "webdrivers"
 end
 
 group :development do

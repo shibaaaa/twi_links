@@ -7,7 +7,7 @@ class User < ApplicationRecord
   has_many :articles, dependent: :destroy
 
   def self.find_for_twitter_oauth(auth)
-    user = User.where(uid: auth.uid, access_token: auth[:credentials][:token]).first
+    user = User.where(uid: auth.uid, provider: auth.provider).first
 
     unless user
       user = User.create(
