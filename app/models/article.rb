@@ -3,8 +3,8 @@
 class Article < ApplicationRecord
   belongs_to :user
 
-  def self.find_or_create_from_tweets(user, token, token_secret)
-    Article.fetch_liked_tweets(token, token_secret).each do |tweet|
+  def self.find_or_create_from_tweets(user)
+    Article.fetch_liked_tweets(user.access_token, user.access_token_secret).each do |tweet|
       unless tweet.attrs[:entities][:urls].empty?
         user.articles.find_or_create_by(url: tweet.attrs[:entities][:urls].first[:expanded_url]) do |article|
           article.user_id =         user.id
