@@ -1,0 +1,105 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.twitter.com/1.1/favorites/list.json
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      User-Agent:
+      - TwitterRubyGem/7.0.0
+      Authorization:
+      - OAuth oauth_consumer_key="<API_KEY>", oauth_nonce="bbf21c08d29970e11e110e2593a4f7e9",
+        oauth_signature="OxP%2BS9TPVzXcOefSnUbIvgn%2FEsA%3D", oauth_signature_method="HMAC-SHA1",
+        oauth_timestamp="1603950913", oauth_token="<ACCESS_TOKEN>", oauth_version="1.0"
+      Connection:
+      - close
+      Host:
+      - api.twitter.com
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - no-cache, no-store, must-revalidate, pre-check=0, post-check=0
+      Connection:
+      - close
+      Content-Disposition:
+      - attachment; filename=json.json
+      Content-Length:
+      - '17281'
+      Content-Type:
+      - application/json;charset=utf-8
+      Date:
+      - Thu, 29 Oct 2020 05:55:13 GMT
+      Expires:
+      - Tue, 31 Mar 1981 05:00:00 GMT
+      Last-Modified:
+      - Thu, 29 Oct 2020 05:55:13 GMT
+      Pragma:
+      - no-cache
+      Server:
+      - tsa_m
+      Set-Cookie:
+      - guest_id=v1%3A160395091329339893; Max-Age=63072000; Expires=Sat, 29 Oct 2022
+        05:55:13 GMT; Path=/; Domain=.twitter.com; Secure; SameSite=None
+      - lang=ja; Path=/
+      - personalization_id="v1_Psh5ogKpHmi046JcqZ/0Ug=="; Max-Age=63072000; Expires=Sat,
+        29 Oct 2022 05:55:13 GMT; Path=/; Domain=.twitter.com; Secure; SameSite=None
+      Status:
+      - 200 OK
+      Strict-Transport-Security:
+      - max-age=631138519
+      X-Access-Level:
+      - read
+      X-Connection-Hash:
+      - 24f33dc7628a7b7c33d540dc8928fbea
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Rate-Limit-Limit:
+      - '75'
+      X-Rate-Limit-Remaining:
+      - '74'
+      X-Rate-Limit-Reset:
+      - '1603951813'
+      X-Response-Time:
+      - '138'
+      X-Transaction:
+      - 005c245e0043086f
+      X-Twitter-Response-Tags:
+      - BouncerCompliant
+      X-Xss-Protection:
+      - '0'
+    body:
+      encoding: UTF-8
+      string: '[{"created_at":"Wed Oct 28 03:25:31 +0000 2020","id":1321291982359199745,"id_str":"1321291982359199745","text":"\u5927\u585a\u5bb6\u5177\u3059\u3054\u3044\u3002\n\u793e\u9577\u8f9e\u4efb\u3067S\u9ad8\u3044\u304f\u306e\u304b\u30fb\u30fb\u30fb
+        https:\/\/t.co\/VFNIPoTDBn","truncated":false,"entities":{"hashtags":[],"symbols":[],"user_mentions":[],"urls":[],"media":[{"id":1321291947772968960,"id_str":"1321291947772968960","indices":[24,47],"media_url":"http:\/\/pbs.twimg.com\/media\/ElYsBqeXgAATrwm.jpg","media_url_https":"https:\/\/pbs.twimg.com\/media\/ElYsBqeXgAATrwm.jpg","url":"https:\/\/t.co\/VFNIPoTDBn","display_url":"pic.twitter.com\/VFNIPoTDBn","expanded_url":"https:\/\/twitter.com\/ocu_investment\/status\/1321291982359199745\/photo\/1","type":"photo","sizes":{"small":{"w":382,"h":680,"resize":"fit"},"thumb":{"w":150,"h":150,"resize":"crop"},"medium":{"w":675,"h":1200,"resize":"fit"},"large":{"w":750,"h":1334,"resize":"fit"}}}]},"extended_entities":{"media":[{"id":1321291947772968960,"id_str":"1321291947772968960","indices":[24,47],"media_url":"http:\/\/pbs.twimg.com\/media\/ElYsBqeXgAATrwm.jpg","media_url_https":"https:\/\/pbs.twimg.com\/media\/ElYsBqeXgAATrwm.jpg","url":"https:\/\/t.co\/VFNIPoTDBn","display_url":"pic.twitter.com\/VFNIPoTDBn","expanded_url":"https:\/\/twitter.com\/ocu_investment\/status\/1321291982359199745\/photo\/1","type":"photo","sizes":{"small":{"w":382,"h":680,"resize":"fit"},"thumb":{"w":150,"h":150,"resize":"crop"},"medium":{"w":675,"h":1200,"resize":"fit"},"large":{"w":750,"h":1334,"resize":"fit"}}}]},"source":"\u003ca
+        href=\"https:\/\/mobile.twitter.com\" rel=\"nofollow\"\u003eTwitter Web App\u003c\/a\u003e","in_reply_to_status_id":null,"in_reply_to_status_id_str":null,"in_reply_to_user_id":null,"in_reply_to_user_id_str":null,"in_reply_to_screen_name":null,"user":{"id":818328005399355392,"id_str":"818328005399355392","name":"Ocu","screen_name":"ocu_investment","location":"","description":"\u517c\u696d\u3002\u70ba\u66ff\uff08\u30dd\u30f3\u30c9\u5186\u30e1\u30a4\u30f3\uff09\u3001\u682a\u3002","url":null,"entities":{"description":{"urls":[]}},"protected":false,"followers_count":61,"friends_count":279,"listed_count":0,"created_at":"Mon
+        Jan 09 05:26:15 +0000 2017","favourites_count":716,"utc_offset":null,"time_zone":null,"geo_enabled":false,"verified":false,"statuses_count":414,"lang":null,"contributors_enabled":false,"is_translator":false,"is_translation_enabled":false,"profile_background_color":"F5F8FA","profile_background_image_url":null,"profile_background_image_url_https":null,"profile_background_tile":false,"profile_image_url":"http:\/\/pbs.twimg.com\/profile_images\/912642415072239617\/XmJXEToa_normal.jpg","profile_image_url_https":"https:\/\/pbs.twimg.com\/profile_images\/912642415072239617\/XmJXEToa_normal.jpg","profile_link_color":"1DA1F2","profile_sidebar_border_color":"C0DEED","profile_sidebar_fill_color":"DDEEF6","profile_text_color":"333333","profile_use_background_image":true,"has_extended_profile":false,"default_profile":true,"default_profile_image":false,"following":false,"follow_request_sent":false,"notifications":false,"translator_type":"none"},"geo":null,"coordinates":null,"place":null,"contributors":null,"is_quote_status":false,"retweet_count":224,"favorite_count":251,"favorited":true,"retweeted":false,"possibly_sensitive":false,"lang":"ja"},{"created_at":"Wed
+        Oct 28 03:05:07 +0000 2020","id":1321286847163731971,"id_str":"1321286847163731971","text":"\u30bd\u30cb\u30fc\u300e\u30c7\u30a3\u30ba\u30cb\u30fc
+        \u30c4\u30a4\u30b9\u30c6\u30c3\u30c9\u30ef\u30f3\u30c0\u30fc\u30e9\u30f3\u30c9\u300f\u306e\u30d8\u30c3\u30c9\u30db\u30f3\uff06\u30a6\u30a9\u30fc\u30af\u30de\u30f3\u3001\u597d\u307f\u306e\u201c\u5bee\u30e2\u30c1\u30fc\u30d5\uff06\u751f\u5f92\u306e\u540d\u524d\u201d\u3092\u523b\u5370
+        - https:\/\/t.co\/MUAHdMwlgP https:\/\/t.co\/Po0Odkegfb","truncated":false,"entities":{"hashtags":[],"symbols":[],"user_mentions":[],"urls":[{"url":"https:\/\/t.co\/MUAHdMwlgP","expanded_url":"https:\/\/www.fashion-press.net\/news\/66251","display_url":"fashion-press.net\/news\/66251","indices":[60,83]}],"media":[{"id":1321286844772982786,"id_str":"1321286844772982786","indices":[84,107],"media_url":"http:\/\/pbs.twimg.com\/media\/ElYnYoUXIAIc1yQ.jpg","media_url_https":"https:\/\/pbs.twimg.com\/media\/ElYnYoUXIAIc1yQ.jpg","url":"https:\/\/t.co\/Po0Odkegfb","display_url":"pic.twitter.com\/Po0Odkegfb","expanded_url":"https:\/\/twitter.com\/fashionpressnet\/status\/1321286847163731971\/photo\/1","type":"photo","sizes":{"thumb":{"w":150,"h":150,"resize":"crop"},"large":{"w":1000,"h":750,"resize":"fit"},"small":{"w":680,"h":510,"resize":"fit"},"medium":{"w":1000,"h":750,"resize":"fit"}}}]},"extended_entities":{"media":[{"id":1321286844772982786,"id_str":"1321286844772982786","indices":[84,107],"media_url":"http:\/\/pbs.twimg.com\/media\/ElYnYoUXIAIc1yQ.jpg","media_url_https":"https:\/\/pbs.twimg.com\/media\/ElYnYoUXIAIc1yQ.jpg","url":"https:\/\/t.co\/Po0Odkegfb","display_url":"pic.twitter.com\/Po0Odkegfb","expanded_url":"https:\/\/twitter.com\/fashionpressnet\/status\/1321286847163731971\/photo\/1","type":"photo","sizes":{"thumb":{"w":150,"h":150,"resize":"crop"},"large":{"w":1000,"h":750,"resize":"fit"},"small":{"w":680,"h":510,"resize":"fit"},"medium":{"w":1000,"h":750,"resize":"fit"}}},{"id":1321286844974288898,"id_str":"1321286844974288898","indices":[84,107],"media_url":"http:\/\/pbs.twimg.com\/media\/ElYnYpEW0AIOf-1.jpg","media_url_https":"https:\/\/pbs.twimg.com\/media\/ElYnYpEW0AIOf-1.jpg","url":"https:\/\/t.co\/Po0Odkegfb","display_url":"pic.twitter.com\/Po0Odkegfb","expanded_url":"https:\/\/twitter.com\/fashionpressnet\/status\/1321286847163731971\/photo\/1","type":"photo","sizes":{"thumb":{"w":150,"h":150,"resize":"crop"},"small":{"w":680,"h":382,"resize":"fit"},"medium":{"w":1000,"h":562,"resize":"fit"},"large":{"w":1000,"h":562,"resize":"fit"}}},{"id":1321286844814970882,"id_str":"1321286844814970882","indices":[84,107],"media_url":"http:\/\/pbs.twimg.com\/media\/ElYnYoeX0AIrjeS.jpg","media_url_https":"https:\/\/pbs.twimg.com\/media\/ElYnYoeX0AIrjeS.jpg","url":"https:\/\/t.co\/Po0Odkegfb","display_url":"pic.twitter.com\/Po0Odkegfb","expanded_url":"https:\/\/twitter.com\/fashionpressnet\/status\/1321286847163731971\/photo\/1","type":"photo","sizes":{"thumb":{"w":150,"h":150,"resize":"crop"},"medium":{"w":1000,"h":750,"resize":"fit"},"small":{"w":680,"h":510,"resize":"fit"},"large":{"w":1000,"h":750,"resize":"fit"}}},{"id":1321286844819132416,"id_str":"1321286844819132416","indices":[84,107],"media_url":"http:\/\/pbs.twimg.com\/media\/ElYnYofXUAAt0qQ.jpg","media_url_https":"https:\/\/pbs.twimg.com\/media\/ElYnYofXUAAt0qQ.jpg","url":"https:\/\/t.co\/Po0Odkegfb","display_url":"pic.twitter.com\/Po0Odkegfb","expanded_url":"https:\/\/twitter.com\/fashionpressnet\/status\/1321286847163731971\/photo\/1","type":"photo","sizes":{"thumb":{"w":150,"h":150,"resize":"crop"},"large":{"w":1000,"h":562,"resize":"fit"},"small":{"w":680,"h":382,"resize":"fit"},"medium":{"w":1000,"h":562,"resize":"fit"}}}]},"source":"\u003ca
+        href=\"http:\/\/www.fashion-press.net\/\" rel=\"nofollow\"\u003eFashion Press\u003c\/a\u003e","in_reply_to_status_id":null,"in_reply_to_status_id_str":null,"in_reply_to_user_id":null,"in_reply_to_user_id_str":null,"in_reply_to_screen_name":null,"user":{"id":168816611,"id_str":"168816611","name":"Fashion
+        Press","screen_name":"fashionpressnet","location":"","description":"\u30d5\u30a1\u30c3\u30b7\u30e7\u30f3WEB\u30de\u30ac\u30b8\u30f3\u300c\u30d5\u30a1\u30c3\u30b7\u30e7\u30f3\u30d7\u30ec\u30b9\u300d\u516c\u5f0f\u30a2\u30ab\u30a6\u30f3\u30c8\u3002
+        \u3010Instagram\u3011http:\/\/t.co\/3myapCJ1Ax\u3010Facebook\u3011http:\/\/t.co\/8FFmQA2set","url":"http:\/\/t.co\/rSEGQEqMH0","entities":{"url":{"urls":[{"url":"http:\/\/t.co\/rSEGQEqMH0","expanded_url":"http:\/\/www.fashion-press.net\/","display_url":"fashion-press.net","indices":[0,22]}]},"description":{"urls":[{"url":"http:\/\/t.co\/3myapCJ1Ax","expanded_url":"http:\/\/instagram.com\/fashionpressjp","display_url":"instagram.com\/fashionpressjp","indices":[44,66]},{"url":"http:\/\/t.co\/8FFmQA2set","expanded_url":"http:\/\/www.facebook.com\/FashionPress.net","display_url":"facebook.com\/FashionPress.n\u2026","indices":[76,98]}]}},"protected":false,"followers_count":3336525,"friends_count":1,"listed_count":11539,"created_at":"Tue
+        Jul 20 21:38:17 +0000 2010","favourites_count":0,"utc_offset":null,"time_zone":null,"geo_enabled":false,"verified":true,"statuses_count":148422,"lang":null,"contributors_enabled":false,"is_translator":false,"is_translation_enabled":false,"profile_background_color":"F5F8FA","profile_background_image_url":"http:\/\/abs.twimg.com\/images\/themes\/theme14\/bg.gif","profile_background_image_url_https":"https:\/\/abs.twimg.com\/images\/themes\/theme14\/bg.gif","profile_background_tile":false,"profile_image_url":"http:\/\/pbs.twimg.com\/profile_images\/890882778878758913\/U37FSz9D_normal.jpg","profile_image_url_https":"https:\/\/pbs.twimg.com\/profile_images\/890882778878758913\/U37FSz9D_normal.jpg","profile_banner_url":"https:\/\/pbs.twimg.com\/profile_banners\/168816611\/1553566968","profile_link_color":"343738","profile_sidebar_border_color":"FFFFFF","profile_sidebar_fill_color":"DDEEF6","profile_text_color":"333333","profile_use_background_image":true,"has_extended_profile":false,"default_profile":false,"default_profile_image":false,"following":false,"follow_request_sent":false,"notifications":false,"translator_type":"none"},"geo":null,"coordinates":null,"place":null,"contributors":null,"is_quote_status":false,"retweet_count":11313,"favorite_count":22092,"favorited":true,"retweeted":false,"possibly_sensitive":false,"lang":"ja"},{"created_at":"Sat
+        Oct 17 06:00:22 +0000 2020","id":1317344683501244416,"id_str":"1317344683501244416","text":"\u30af\u30ea\u30b9\u30de\u30b9\u30b1\u30fc\u30ad\u306e\u3054\u4e88\u7d04\u627f\u308a\u4e2d\u3067\u3059\u266a\u65e9\u671f\u4e88\u7d04\u7279\u5178\u3082\u3042\u308a\u307e\u3059\u306e\u3067\u3001\u305c\u3072\u30c1\u30a7\u30c3\u30af\u3057\u3066\u304f\u3060\u3055\u3044(^^)
+        #\u30ed\u30fc\u30bd\u30f3 #\u30af\u30ea\u30b9\u30de\u30b9 \nhttps:\/\/t.co\/06qWjhOJP9
+        https:\/\/t.co\/Jk0kbFZTfa","truncated":false,"entities":{"hashtags":[{"text":"\u30ed\u30fc\u30bd\u30f3","indices":[49,54]},{"text":"\u30af\u30ea\u30b9\u30de\u30b9","indices":[55,61]}],"symbols":[],"user_mentions":[],"urls":[{"url":"https:\/\/t.co\/06qWjhOJP9","expanded_url":"https:\/\/bddy.me\/3lSQCwv","display_url":"bddy.me\/3lSQCwv","indices":[63,86]}],"media":[{"id":1317344676790370311,"id_str":"1317344676790370311","indices":[87,110],"media_url":"http:\/\/pbs.twimg.com\/media\/EkgmAQLXgAcW_L1.jpg","media_url_https":"https:\/\/pbs.twimg.com\/media\/EkgmAQLXgAcW_L1.jpg","url":"https:\/\/t.co\/Jk0kbFZTfa","display_url":"pic.twitter.com\/Jk0kbFZTfa","expanded_url":"https:\/\/twitter.com\/akiko_lawson\/status\/1317344683501244416\/photo\/1","type":"photo","sizes":{"thumb":{"w":150,"h":150,"resize":"crop"},"medium":{"w":800,"h":450,"resize":"fit"},"small":{"w":680,"h":383,"resize":"fit"},"large":{"w":800,"h":450,"resize":"fit"}}}]},"extended_entities":{"media":[{"id":1317344676790370311,"id_str":"1317344676790370311","indices":[87,110],"media_url":"http:\/\/pbs.twimg.com\/media\/EkgmAQLXgAcW_L1.jpg","media_url_https":"https:\/\/pbs.twimg.com\/media\/EkgmAQLXgAcW_L1.jpg","url":"https:\/\/t.co\/Jk0kbFZTfa","display_url":"pic.twitter.com\/Jk0kbFZTfa","expanded_url":"https:\/\/twitter.com\/akiko_lawson\/status\/1317344683501244416\/photo\/1","type":"photo","sizes":{"thumb":{"w":150,"h":150,"resize":"crop"},"medium":{"w":800,"h":450,"resize":"fit"},"small":{"w":680,"h":383,"resize":"fit"},"large":{"w":800,"h":450,"resize":"fit"}}}]},"source":"\u003ca
+        href=\"http:\/\/www.salesforce.com\" rel=\"nofollow\"\u003eSalesforce - Social
+        Studio\u003c\/a\u003e","in_reply_to_status_id":null,"in_reply_to_status_id_str":null,"in_reply_to_user_id":null,"in_reply_to_user_id_str":null,"in_reply_to_screen_name":null,"user":{"id":115639376,"id_str":"115639376","name":"\u30ed\u30fc\u30bd\u30f3","screen_name":"akiko_lawson","location":"","description":"\u3010\u30ed\u30fc\u30bd\u30f3\u516c\u5f0fTwitter\u3011\u30ed\u30fc\u30bd\u30f3\u30af\u30eb\u30fc\u266a\u3042\u304d\u3053\u3067\u3059(^^)\u6700\u65b0\u60c5\u5831\u3092\u30de\u30a4\u30da\u30fc\u30b9\u3067\u304a\u77e5\u3089\u305b\u3057\u307e\u3059\u3002instagram\u306f
+        https:\/\/t.co\/ug6xZ4vRHx \u2606 youtube\u306fhttps:\/\/t.co\/3VyRx1spun","url":"https:\/\/t.co\/8vXbTU361Y","entities":{"url":{"urls":[{"url":"https:\/\/t.co\/8vXbTU361Y","expanded_url":"http:\/\/lawson.co.jp","display_url":"lawson.co.jp","indices":[0,23]}]},"description":{"urls":[{"url":"https:\/\/t.co\/ug6xZ4vRHx","expanded_url":"https:\/\/www.instagram.com\/akiko_lawson\/","display_url":"instagram.com\/akiko_lawson\/","indices":[62,85]},{"url":"https:\/\/t.co\/3VyRx1spun","expanded_url":"http:\/\/bit.ly\/2Lqolzd","display_url":"bit.ly\/2Lqolzd","indices":[96,119]}]}},"protected":false,"followers_count":5272268,"friends_count":187762,"listed_count":13691,"created_at":"Fri
+        Feb 19 11:16:00 +0000 2010","favourites_count":293,"utc_offset":null,"time_zone":null,"geo_enabled":false,"verified":true,"statuses_count":50441052,"lang":null,"contributors_enabled":false,"is_translator":false,"is_translation_enabled":false,"profile_background_color":"C0DEED","profile_background_image_url":"http:\/\/abs.twimg.com\/images\/themes\/theme1\/bg.png","profile_background_image_url_https":"https:\/\/abs.twimg.com\/images\/themes\/theme1\/bg.png","profile_background_tile":false,"profile_image_url":"http:\/\/pbs.twimg.com\/profile_images\/875517108884455426\/q3HMm7hU_normal.jpg","profile_image_url_https":"https:\/\/pbs.twimg.com\/profile_images\/875517108884455426\/q3HMm7hU_normal.jpg","profile_banner_url":"https:\/\/pbs.twimg.com\/profile_banners\/115639376\/1556007147","profile_link_color":"F5ABB5","profile_sidebar_border_color":"FFFFFF","profile_sidebar_fill_color":"DDEEF6","profile_text_color":"333333","profile_use_background_image":true,"has_extended_profile":false,"default_profile":false,"default_profile_image":false,"following":false,"follow_request_sent":false,"notifications":false,"translator_type":"none"},"geo":null,"coordinates":null,"place":null,"contributors":null,"is_quote_status":false,"retweet_count":162,"favorite_count":1126,"favorited":true,"retweeted":false,"possibly_sensitive":false,"lang":"ja"},{"created_at":"Mon
+        Oct 05 01:16:04 +0000 2020","id":1312924482009399296,"id_str":"1312924482009399296","text":"\u306f\u3066\u306a\u30d6\u30ed\u30b0\u306b\u6295\u7a3f\u3057\u307e\u3057\u305f
+        #\u306f\u3066\u306a\u30d6\u30ed\u30b0\n\u30d5\u30a3\u30e8\u30eb\u30c9\u30d6\u30fc\u30c8\u30ad\u30e3\u30f3\u30d7\u3067\u306e\u5b66\u7fd2\u6642\u9593\u304c1000\u6642\u9593\u3092\u8d8a\u3048\u307e\u3057\u305f
+        - \u67f4\u30d6\u30ed\u30b0\nhttps:\/\/t.co\/EgQMOM5H0d","truncated":false,"entities":{"hashtags":[{"text":"\u306f\u3066\u306a\u30d6\u30ed\u30b0","indices":[14,21]}],"symbols":[],"user_mentions":[],"urls":[{"url":"https:\/\/t.co\/EgQMOM5H0d","expanded_url":"https:\/\/shibaaa647.hatenablog.com\/entry\/2020\/10\/05\/101550","display_url":"shibaaa647.hatenablog.com\/entry\/2020\/10\/\u2026","indices":[61,84]}]},"source":"\u003ca
+        href=\"https:\/\/hatenablog.com\" rel=\"nofollow\"\u003eHatena Blog \/ \u306f\u3066\u306a\u30d6\u30ed\u30b0\u003c\/a\u003e","in_reply_to_status_id":null,"in_reply_to_status_id_str":null,"in_reply_to_user_id":null,"in_reply_to_user_id_str":null,"in_reply_to_screen_name":null,"user":{"id":757975019234353157,"id_str":"757975019234353157","name":"shibaaa","screen_name":"shibaaa66","location":"","description":"#fjordbootcamp
+        \u3067\u30d7\u30ed\u30b0\u30e9\u30df\u30f3\u30b0\u52c9\u5f37\u4e2d \/ Ruby
+        \/ Ruby on Rails \/ Node.js \/ Vue.js","url":"https:\/\/t.co\/eJRigQMD00","entities":{"url":{"urls":[{"url":"https:\/\/t.co\/eJRigQMD00","expanded_url":"https:\/\/shibaaa647.hatenablog.com\/","display_url":"shibaaa647.hatenablog.com","indices":[0,23]}]},"description":{"urls":[]}},"protected":false,"followers_count":108,"friends_count":146,"listed_count":1,"created_at":"Tue
+        Jul 26 16:25:01 +0000 2016","favourites_count":603,"utc_offset":null,"time_zone":null,"geo_enabled":false,"verified":false,"statuses_count":299,"lang":null,"contributors_enabled":false,"is_translator":false,"is_translation_enabled":false,"profile_background_color":"F5F8FA","profile_background_image_url":null,"profile_background_image_url_https":null,"profile_background_tile":false,"profile_image_url":"http:\/\/pbs.twimg.com\/profile_images\/1225219657230995456\/6g351oag_normal.jpg","profile_image_url_https":"https:\/\/pbs.twimg.com\/profile_images\/1225219657230995456\/6g351oag_normal.jpg","profile_link_color":"1DA1F2","profile_sidebar_border_color":"C0DEED","profile_sidebar_fill_color":"DDEEF6","profile_text_color":"333333","profile_use_background_image":true,"has_extended_profile":true,"default_profile":true,"default_profile_image":false,"following":false,"follow_request_sent":false,"notifications":false,"translator_type":"none"},"geo":null,"coordinates":null,"place":null,"contributors":null,"is_quote_status":false,"retweet_count":1,"favorite_count":22,"favorited":true,"retweeted":false,"possibly_sensitive":false,"lang":"ja"}]'
+  recorded_at: Thu, 29 Oct 2020 05:55:13 GMT
+recorded_with: VCR 6.0.0

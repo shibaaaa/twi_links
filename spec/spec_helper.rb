@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require "capybara/rspec"
+require "vcr"
 
 RSpec.configure do |config|
   config.before(:each, type: :system) do
@@ -16,4 +17,13 @@ RSpec.configure do |config|
   end
 
   config.shared_context_metadata_behavior = :apply_to_host_groups
+end
+
+VCR.configure do |c|
+  c.cassette_library_dir = "spec/vcr"
+  c.hook_into :webmock
+  c.allow_http_connections_when_no_cassette = false
+  c.configure_rspec_metadata!
+  c.filter_sensitive_data('<API_KEY>') { ENV['TWITTER_API_KEY'] }
+  c.filter_sensitive_data('<ACCESS_TOKEN>') { ENV['ACCESS_TOKEN'] }
 end
