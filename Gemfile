@@ -15,6 +15,7 @@ gem "bootsnap", ">= 1.4.2", require: false
 # Not default
 gem "pg", ">= 0.18", "< 2.0"
 gem "rails-i18n", "~> 6.0.0"
+gem "slim-rails"
 gem "devise"
 gem "devise-i18n"
 gem "omniauth"
@@ -27,7 +28,7 @@ group :development, :test do
   gem "byebug", platforms: [:mri, :mingw, :x64_mingw]
 
   # Not default
-  gem "rspec-rails", "~> 4.0.1"
+  gem "rspec-rails"
   gem "factory_bot_rails"
   gem "capybara"
   gem "selenium-webdriver"
@@ -44,7 +45,6 @@ group :development do
 
   # Not default
   gem "slim_lint"
-  gem "slim-rails"
   gem "html2slim"
   gem "rubocop", require: false
   gem "rubocop-performance", require: false

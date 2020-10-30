@@ -1,11 +1,10 @@
 # frozen_string_literal: true
 
-require "capybara/rspec"
 require "vcr"
 
 RSpec.configure do |config|
   config.before(:each, type: :system) do
-    driven_by :selenium_chrome_headless
+    driven_by :selenium, using: :headless_chrome, screen_size: [1400, 1400]
   end
 
   config.expect_with :rspec do |expectations|
@@ -24,6 +23,8 @@ VCR.configure do |c|
   c.hook_into :webmock
   c.allow_http_connections_when_no_cassette = false
   c.configure_rspec_metadata!
-  c.filter_sensitive_data('<API_KEY>') { ENV['TWITTER_API_KEY'] }
-  c.filter_sensitive_data('<ACCESS_TOKEN>') { ENV['ACCESS_TOKEN'] }
+  c.ignore_localhost = true
+  c.ignore_hosts "chromedriver.storage.googleapis.com"
+  c.filter_sensitive_data("<API_KEY>") { ENV["TWITTER_API_KEY"] }
+  c.filter_sensitive_data("<ACCESS_TOKEN>") { ENV["ACCESS_TOKEN"] }
 end
