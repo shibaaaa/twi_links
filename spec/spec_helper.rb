@@ -25,6 +25,10 @@ VCR.configure do |c|
   c.configure_rspec_metadata!
   c.ignore_localhost = true
   c.ignore_hosts "chromedriver.storage.googleapis.com"
+  c.default_cassette_options = {
+    match_requests_on: [:method,
+      VCR.request_matchers.uri_without_param(:url)]
+  }
   c.filter_sensitive_data("<API_KEY>") { ENV["TWITTER_API_KEY"] }
   c.filter_sensitive_data("<ACCESS_TOKEN>") { ENV["ACCESS_TOKEN"] }
 end
