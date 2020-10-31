@@ -5,7 +5,7 @@ class ArticlesController < ApplicationController
 
   def index
     if user_signed_in?
-      Article.find_or_create_from_tweets(current_user, current_user.access_token, current_user.access_token_secret)
+      Article.find_or_create_from_tweets(current_user)
       @articles = current_user.articles.all
     else
       render "welcome/index"

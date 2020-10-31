@@ -2,9 +2,10 @@
 
 FactoryBot.define do
   factory :article do
-    user { nil }
-    url { "MyString" }
-    tweet_url { "MyString" }
-    tweet_user_meta { "MyString" }
+    user
+    url { "https://example.com" }
+    tweet_url { "https://twitter_example.com" }
+    tweet_user_meta { "example_meta" }
+    tweet_date { 2020-10-30 }
   end
 end
