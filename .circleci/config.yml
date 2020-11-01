@@ -6,20 +6,21 @@ jobs:
       - image: circleci/ruby:2.7.1-node-browsers
         environment:
           PGHOST: 127.0.0.1
-          PGUSER: twi_links
+          PGUSER: twilinks
           RAILS_ENV: test
       - image: circleci/postgres:12.3
         environment:
-          POSTGRES_USER: twi_links
-          POSTGRES_DB: twi_links_test
-          POSTGRES_PASSWORD: ""
+          POSTGRES_USER: twilinks
+          POSTGRES_DB: twilinks_test
+          POSTGRES_PASSWORD: password
     steps:
       - checkout
       - run:
           name: Bundle Install
           command: bundle check || bundle install
           
-      - run: gem install bundler -v $BUNDLER_VERSION
+      - run: gem install bundler
+
       - run:
           name: Update bundler
           command: gem update bundler
@@ -28,15 +29,8 @@ jobs:
           name: Which bundler?
           command: bundle -v
 
-      # Restore bundle cache
-      - restore_cache:
-          keys:
-            - asset-cache-{{ arch }}-{{ .Branch }}
-            - asset-cache-
-      - run: bin/rails assets:precompile
-
       - save_cache:
-          key: rails-demo-bundle-v2-{{ checksum "Gemfile.lock" }}
+          key: gem-cache-v1-{{ checksum "Gemfile.lock" }}
           paths:
             - vendor/bundle
 
@@ -61,16 +55,11 @@ jobs:
       - run:
           name: Lint
           command: bundle exec slim-lint app/views -c config/slim_lint.yml
-      - run:
-          name: Wait for DB
-          command: dockerize -wait tcp://localhost:5432 -timeout 1m
 
       - run:
           name: Database setup
-          command: bin/rails db:schema:load
+          command: bundle exec rake db:schema:load
 
       - run:
           name: Rails test
           command: bundle exec rspec
-      - store_test_results:
-          path: test_results
