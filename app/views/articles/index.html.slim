@@ -3,6 +3,7 @@ h1 記事一覧
 - @articles.each do |article|
   ul
     li = article.tweet_date
-    li = link_to "この記事へ", "#{article.url}", target: "_blank", rel: "noopener noreferrer"
+    li = link_to ogp_title(article.url), "#{article.url}", target: "_blank", rel: "noopener noreferrer"
+    li = image_tag ogp_image(article.url)
     li = link_to image_tag("#{article.tweet_user_meta}"), "#{article.tweet_url}", target: "_blank", rel: "noopener noreferrer"
     li = link_to "この記事の関連ツイートへ", "https://twitter.com/search?q=#{article.url}&src=typed_query", target: "_blank", rel: "noopener noreferrer"
