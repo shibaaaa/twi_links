@@ -16,3 +16,6 @@
             img.is-rounded src="#{article.tweet_user_meta}"
       .card-footer-item
         = link_to "この記事の関連ツイートへ", "https://twitter.com/search?q=#{article.url}&src=typed_query", target: "_blank", rel: "noopener noreferrer"
+      .card-footer-item
+        = link_to article_path(article), method: :delete, data: { confirm: "削除してよろしいですか？" }
+          i.fas.fa-trash-alt.fa-lg
