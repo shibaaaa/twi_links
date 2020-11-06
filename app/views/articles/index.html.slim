@@ -21,4 +21,12 @@
           = link_to article_path(article), method: :delete, data: { confirm: "削除してよろしいですか？" }
             i.fas.fa-trash-alt.fa-lg
 -else
-  = button_to "いいねしたツイートを読み込む", articles_path
+  article.message.is-info.is-medium
+    .message-body
+      |まだ記事が登録されていません。
+      br
+      |以下のボタンをクリックするとTwitterでいいねしたツイートを読み込みます。
+      br
+      br
+      .button.is-midium.is-info
+        = link_to "いいねしたツイートを読み込む", articles_path, method: :post
