@@ -5,7 +5,6 @@ class ArticlesController < ApplicationController
 
   def index
     if user_signed_in?
-      Article.find_or_create_from_tweets(current_user)
       @articles = current_user.articles.all
     else
       render "welcome/index"
@@ -13,6 +12,8 @@ class ArticlesController < ApplicationController
   end
 
   def create
+    Article.find_or_create_from_tweets(current_user)
+    redirect_to articles_url, notice: "いいねしたツイートから記事を取得しました。"
   end
 
   def destroy
