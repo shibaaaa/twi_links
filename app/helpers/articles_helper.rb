@@ -16,7 +16,7 @@ module ArticlesHelper
   private
     def article_page(target_url)
       agent = Mechanize.new
-      agent.user_agent_alias = "Windows Mozilla"
+      agent.user_agent_alias = "Windows Chrome"
       agent.get(target_url)
     end
 end

@@ -5,7 +5,7 @@ Rails.application.routes.draw do
 
   get "welcome", to: "welcome#index", as: "welcome"
 
-  resources :articles, only: %i(index create destroy)
+  resources :articles
 
   devise_for :users, only: [:sessions, :omniauth_callbacks], controllers: {
     omniauth_callbacks: "users/omniauth_callbacks",
