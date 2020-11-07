@@ -5,7 +5,7 @@ class ArticlesController < ApplicationController
 
   def index
     if user_signed_in?
-      @articles = current_user.articles.all
+      @articles = current_user.articles.order(tweet_date: "DESC")
     else
       render "welcome/index"
     end
