@@ -22,6 +22,7 @@
             .card-footer-item
               = link_to article_path(article), method: :delete, data: { confirm: "削除してよろしいですか？" }
                 i.fas.fa-trash-alt.fa-lg
+  = paginate @articles
 -else
   article.message.is-info.is-medium
     .message-body
