@@ -8,7 +8,7 @@ class ArticlesController < ApplicationController
     if user_signed_in?
       @articles = current_user.articles.order(tweet_date: "DESC").page(params[:page]).per(ARTICLES_NUM)
     else
-      render "welcome/index"
+      render "welcome/index", layout: "welcome"
     end
   end
 

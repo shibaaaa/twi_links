@@ -1,0 +1,19 @@
+nav.navbar.is-fixed-top role="navigation" aria-label="main navigation"
+  .navbar-brand
+    .navbar-item
+      .title
+        |TwiLinks
+    a.navbar-burger.burger role="button" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample"
+      span aria-hidden="true"
+      span aria-hidden="true"
+      span aria-hidden="true"
+  #navbarBasicExample.navbar-menu
+    .navbar-start
+      .navbar-item
+        a.button.is-info rel="nofollow" data-method="post" href="/articles"
+          |ツイートを読み込む
+    .navbar-end
+      .navbar-item
+        - if user_signed_in?
+          a.button.is-outlined rel="nofollow" data-method="delete" href="/users/sign_out"
+            |ログアウト
