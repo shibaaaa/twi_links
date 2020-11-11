@@ -1,4 +1,4 @@
-footer.footer.py-2
+footer.footer.py-2.has-background-white
   .content.has-text-centered
     span.mx-3
       = link_to "トップページ", welcome_index_path
@@ -7,9 +7,13 @@ footer.footer.py-2
     span.mx-3
       = link_to "免責事項", disclaimers_path
   .content.has-text-centered
-    a.mx-3 href="https://github.com/shibaaaa/twi_links" target="_blank" rel="noopener noreferrer"
-      i.fab.fa-github-square.fa-2x style="color:darkgray;"
-    a.mx-3 href="https://twitter.com/shibaaa66" target="_blank" rel="noopener noreferrer"
-      i.fab.fa-twitter-square.fa-2x style="color:darkgray;"
-  .content.has-text-centered
-    | ©shibaaa 2020
+    span.mx-2
+      | ©shibaaa
+    span.mr-2
+      = Date.today.year
+    span
+      a.mx-2 href="https://github.com/shibaaaa/twi_links" target="_blank" rel="noopener noreferrer"
+        i.fab.fa-github.fa-lg style="color:darkgray;"
+    span
+      a.mx-2 href="https://twitter.com/shibaaa66" target="_blank" rel="noopener noreferrer"
+        i.fab.fa-twitter.fa-lg style="color:darkgray;"
