@@ -28,8 +28,8 @@
     .message-body
       |まだ記事が登録されていません。
       br
-      |以下のボタンをクリックするとTwitterでいいねしたツイートを読み込みます。
+      |以下のボタンをクリックするとTwitterでいいねしたツイートを読み込んで記事を登録します。
       br
       br
-      .button.is-midium.is-info
-        = link_to "いいねしたツイートを読み込む", articles_path, method: :post
+      a.button.is-info rel="nofollow" data-method="post" href="/articles"
+        |ツイートを読み込む

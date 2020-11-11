@@ -2,9 +2,9 @@
 
 Rails.application.routes.draw do
   root to: "articles#index"
-
-  get "welcome", to: "welcome#index", as: "welcome"
-
+  resources :privacy_policies, only: %i(index)
+  resources :disclaimers, only: %i(index)
+  resources :welcome, only: %i(index)
   resources :articles
 
   devise_for :users, only: [:sessions, :omniauth_callbacks], controllers: {
