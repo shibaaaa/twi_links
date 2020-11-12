@@ -4,8 +4,7 @@ class Article < ApplicationRecord
   belongs_to :user
 
   def self.find_or_create_from_tweets(user)
-    liked_tweets = Article.twitter_client(user.access_token, user.access_token_secret).favorites
-    liked_tweets.each do |tweet|
+    Article.fetch_liked_tweets(user).each do |tweet|
       unless tweet.attrs[:entities][:urls].empty?
         user.articles.find_or_create_by(url: tweet.attrs[:entities][:urls].first[:expanded_url]) do |article|
           article.title =           Article.fetch_title(article.url)
@@ -47,5 +46,9 @@ class Article < ApplicationRecord
 
     def self.fetch_og_image(target_url)
       Article.fetch_article_page(target_url).at('meta[property="og:image"]')[:content]
+    end
+
+    def self.fetch_liked_tweets(user)
+      Article.twitter_client(user.access_token, user.access_token_secret).favorites
     end
 end
