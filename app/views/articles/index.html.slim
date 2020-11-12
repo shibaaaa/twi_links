@@ -8,10 +8,10 @@
               = article.tweet_date
           .card-content
             p.title.is-4
-              = link_to ogp_title(article.url), "#{article.url}", target: "_blank", rel: "noopener noreferrer"
+              = link_to "#{article.title}", "#{article.url}", target: "_blank", rel: "noopener noreferrer"
           .card-image
             figure.image.is-16by9
-              = link_to image_tag(ogp_image(article.url)), "#{article.url}", target: "_blank", rel: "noopener noreferrer"
+              = link_to image_tag(article.image_meta), "#{article.url}", target: "_blank", rel: "noopener noreferrer"
           footer.card-footer
               a.card-footer-item href="#{article.tweet_url}" target="_blank" rel="noopener noreferrer"
                 figure.image
