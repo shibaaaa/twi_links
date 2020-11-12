@@ -1,5 +1,5 @@
 - if @articles.present?
-  .columns.is-variable.is-5.is-multiline.mt-3
+  .columns.is-variable.is-5.is-multiline.mt-3.mx-3
     - @articles.each do |article|
       .column.is-half
         .card
@@ -13,14 +13,11 @@
             figure.image.is-16by9
               = link_to image_tag(ogp_image(article.url)), "#{article.url}", target: "_blank", rel: "noopener noreferrer"
           footer.card-footer
-            .card-footer-item
-              a href="#{article.tweet_url}" target="_blank" rel="noopener noreferrer"
+              a.card-footer-item href="#{article.tweet_url}" target="_blank" rel="noopener noreferrer"
                 figure.image
                   img.is-rounded src="#{article.tweet_user_meta}"
-            .card-footer-item
-              = link_to "関連ツイートへ", "https://twitter.com/search?q=#{article.url}&src=typed_query", target: "_blank", rel: "noopener noreferrer"
-            .card-footer-item
-              = link_to article_path(article), method: :delete, data: { confirm: "削除してよろしいですか？" }
+              = link_to "関連ツイートへ", "https://twitter.com/search?q=#{article.url}&src=typed_query", target: "_blank", rel: "noopener noreferrer", class: "card-footer-item"
+              = link_to article_path(article), method: :delete, data: { confirm: "削除してよろしいですか？" }, class: "card-footer-item"
                 i.fas.fa-trash-alt.fa-lg
   = paginate @articles
 -else
@@ -31,5 +28,4 @@
       | 以下のボタンをクリックするとTwitterでいいねしたツイートを読み込んで記事を登録します。
       br
       br
-      a.button.is-info rel="nofollow" data-method="post" href="/articles"
-        | ツイートを読み込む
+      = link_to "ツイートを読み込む", articles_path, method: :post, class: "button is-info"
