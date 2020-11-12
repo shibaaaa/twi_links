@@ -8,17 +8,17 @@
               = article.tweet_date
           .card-content
             p.title.is-4
-              = link_to ogp_title(article.url), "#{article.url}", target: "_blank", rel: "noopener noreferrer"
+              = link_to "#{article.title}", "#{article.url}", target: "_blank", rel: "noopener noreferrer"
           .card-image
             figure.image.is-16by9
-              = link_to image_tag(ogp_image(article.url)), "#{article.url}", target: "_blank", rel: "noopener noreferrer"
+              = link_to image_tag(article.image_meta), "#{article.url}", target: "_blank", rel: "noopener noreferrer"
           footer.card-footer
-              a.card-footer-item href="#{article.tweet_url}" target="_blank" rel="noopener noreferrer"
-                figure.image
-                  img.is-rounded src="#{article.tweet_user_meta}"
-              = link_to "関連ツイートへ", "https://twitter.com/search?q=#{article.url}&src=typed_query", target: "_blank", rel: "noopener noreferrer", class: "card-footer-item"
-              = link_to article_path(article), method: :delete, data: { confirm: "削除してよろしいですか？" }, class: "card-footer-item"
-                i.fas.fa-trash-alt.fa-lg
+            a.card-footer-item href="#{article.tweet_url}" target="_blank" rel="noopener noreferrer"
+              figure.image
+                img.is-rounded src="#{article.tweet_user_meta}"
+            = link_to "関連ツイートへ", "https://twitter.com/search?q=#{article.url}&src=typed_query", target: "_blank", rel: "noopener noreferrer", class: "card-footer-item"
+            = link_to article_path(article), method: :delete, data: { confirm: "削除してよろしいですか？" }, class: "card-footer-item"
+              i.fas.fa-trash-alt.fa-lg
   = paginate @articles
 -else
   article.message.is-info.is-medium
@@ -28,4 +28,4 @@
       | 以下のボタンをクリックするとTwitterでいいねしたツイートを読み込んで記事を登録します。
       br
       br
-      = link_to "ツイートを読み込む", articles_path, method: :post, class: "button is-info"
+      = link_to "ツイートを読み込む", articles_path, method: :post, class: "button is-info is-medium"
