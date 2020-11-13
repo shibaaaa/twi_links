@@ -3,20 +3,25 @@
 class Article < ApplicationRecord
   belongs_to :user
 
-  def self.find_or_create_from_tweets(user)
-    Article.fetch_liked_tweets(user).each do |tweet|
+  def self.insert_from_tweets(user)
+    insert_articles = Article.fetch_liked_tweets(user).map do |tweet|
       unless tweet.attrs[:entities][:urls].empty?
-        user.articles.find_or_create_by(url: tweet.attrs[:entities][:urls].first[:expanded_url]) do |article|
-          article.title =           Article.fetch_title(article.url)
-          article.image_meta =      Article.fetch_og_image(article.url)
-          article.user_id =         user.id
-          article.tweet_id =        tweet.id
-          article.tweet_date =      tweet.attrs[:created_at]
-          article.tweet_url =       tweet.url.to_s
-          article.tweet_user_meta = tweet.attrs[:user][:profile_image_url_https]
-        end
+        article_url = tweet.attrs[:entities][:urls].first[:expanded_url]
+        ({
+          url: article_url,
+          title: Article.fetch_title(article_url),
+          image_meta: Article.fetch_og_image(article_url),
+          user_id: user.id,
+          tweet_id: tweet.id,
+          tweet_date: tweet.attrs[:created_at],
+          tweet_url: tweet.url.to_s,
+          tweet_user_meta: tweet.attrs[:user][:profile_image_url_https],
+          updated_at: DateTime.now,
+          created_at: DateTime.now
+        })
       end
     end
+    Article.insert_all(insert_articles, unique_by: :url)
   end
 
   def self.unfavorite_tweet(tweet_id, user)
