@@ -13,7 +13,7 @@ class ArticlesController < ApplicationController
   end
 
   def create
-    Article.find_or_create_from_tweets(current_user)
+    Article.insert_from_tweets(current_user)
     redirect_to articles_url, notice: "いいねしたツイートから記事を取得しました。"
   end
 

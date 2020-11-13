@@ -29,7 +29,7 @@ RSpec.describe "Articles", type: :system do
       visit articles_path
       click_on "ツイートを読み込む", match: :first
       page.accept_confirm do
-        first(:css, ".fas.fa-trash-alt").click
+        first(:css, ".fas.fa-trash-alt.fa-lg").click
       end
       expect(page).to have_content "記事を削除しました。"
     end
