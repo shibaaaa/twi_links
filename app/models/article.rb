@@ -52,6 +52,7 @@ class Article < ApplicationRecord
 
       def fetch_og_image(target_url)
         if fetch_article_page(target_url).at('meta[property="og:image"]').nil?
+          # 対象のページのog:imageタグがなければ'No Image'画像を適用
           "http://design-ec.com/d/e_others_50/m_e_others_500.jpg"
         else
           fetch_article_page(target_url).at('meta[property="og:image"]')[:content]
