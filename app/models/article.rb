@@ -3,33 +3,33 @@
 class Article < ApplicationRecord
   belongs_to :user
 
-  def self.insert_from_tweets(user)
-    insert_articles = Article.fetch_liked_tweets(user).map do |tweet|
-      unless tweet.attrs[:entities][:urls].empty?
-        article_url = tweet.attrs[:entities][:urls].first[:expanded_url]
-        ({
-          url: article_url,
-          title: Article.fetch_title(article_url),
-          image_meta: Article.fetch_og_image(article_url),
-          user_id: user.id,
-          tweet_id: tweet.id,
-          tweet_date: tweet.attrs[:created_at],
-          tweet_url: tweet.url.to_s,
-          tweet_user_meta: tweet.attrs[:user][:profile_image_url_https],
-          updated_at: DateTime.now,
-          created_at: DateTime.now
-        })
+  class << self
+    def insert_from_tweets(user)
+      insert_articles = Article.fetch_liked_tweets(user).map do |tweet|
+        unless tweet.attrs[:entities][:urls].empty?
+          article_url = tweet.attrs[:entities][:urls].first[:expanded_url]
+          ({
+            url: article_url,
+            title: Article.fetch_title(article_url),
+            image_meta: Article.fetch_og_image(article_url),
+            user_id: user.id,
+            tweet_id: tweet.id,
+            tweet_date: tweet.attrs[:created_at],
+            tweet_url: tweet.url.to_s,
+            tweet_user_meta: tweet.attrs[:user][:profile_image_url_https],
+            updated_at: DateTime.now,
+            created_at: DateTime.now
+          })
+        end
       end
+      Article.insert_all(insert_articles, unique_by: :url)
     end
-    Article.insert_all(insert_articles, unique_by: :url)
-  end
 
-  def self.unfavorite_tweet(tweet_id, user)
-    Article.twitter_client(user.access_token, user.access_token_secret).unfavorite(tweet_id)
-  end
+    def unfavorite_tweet(tweet_id, user)
+      Article.twitter_client(user.access_token, user.access_token_secret).unfavorite(tweet_id)
+    end
 
-  private
-    def self.twitter_client(token, token_secret)
+    def twitter_client(token, token_secret)
       client = Twitter::REST::Client.new do |config|
         config.consumer_key        = ENV["TWITTER_API_KEY"]
         config.consumer_secret     = ENV["TWITTER_API_SECRET"]
@@ -39,21 +39,22 @@ class Article < ApplicationRecord
       client
     end
 
-    def self.fetch_article_page(target_url)
+    def fetch_article_page(target_url)
       agent = Mechanize.new
       agent.user_agent_alias = "Windows Chrome"
       agent.get(target_url)
     end
 
-    def self.fetch_title(target_url)
+    def fetch_title(target_url)
       Article.fetch_article_page(target_url).title
     end
 
-    def self.fetch_og_image(target_url)
+    def fetch_og_image(target_url)
       Article.fetch_article_page(target_url).at('meta[property="og:image"]')[:content]
     end
 
-    def self.fetch_liked_tweets(user)
+    def fetch_liked_tweets(user)
       Article.twitter_client(user.access_token, user.access_token_secret).favorites
     end
+  end
 end

@@ -1,13 +1,17 @@
-section.hero.is-bold.is-light
+section.hero.is-bold.has-background-link-light.mb-6
   .hero-body
     .container.has-text-centered
-      h1.title.has-text-grey-dark.welcome_logo
+      h1.title.welcome_logo.has-text-grey-darker
         |TwiLinks
-      h2.subtitle.is-3
+      h2.subtitle.is-3.has-text-weight-semibold
         |Twitterの「いいね」からブックマークを作成
       br
-      p.subtitle.is-5.mt-4 ご利用にはTwitterアカウントが必要です。
-      = link_to "Twitterと連携してログイン(無料)", user_twitter_omniauth_authorize_path, method: :post, class: "button is-large is-link has-text-weight-semibold"
+      p.subtitle.is-5.mt-4
+        span
+          | ご利用にはTwitterアカウントが必要です
+        span
+          i.fab.fa-twitter.fa-lg style="color:#3298dc;"
+      = link_to "Twitterと連携してログイン(無料)", user_twitter_omniauth_authorize_path, method: :post, class: "button is-large is-link has-text-weight-semibold "
       p.mt-3
         = link_to "プライバシーポリシー", privacy_policies_path
         | 及び、
