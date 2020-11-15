@@ -1,0 +1,16 @@
+.welcome_logo {
+  line-height: 1.2;
+  font-size: 5.5rem;
+  text-indent: -0.7rem;
+}
+
+.feature__image {
+  margin-bottom: .8rem;
+  width: 120px;
+  height: 120px;
+
+  @media(max-width: 960px) {
+    margin-right: 1rem;
+    margin-bottom: 0;
+  }
+}
