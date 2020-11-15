@@ -1,14 +1,28 @@
-section.hero.is-medium.is-bold
+section.hero.is-bold.is-light
   .hero-body
     .container.has-text-centered
-      h1.title.is-size-1 TwiLinks
-      h2.subtitle.is-4
+      h1.title.has-text-grey-dark.welcome_logo
+        |TwiLinks
+      h2.subtitle.is-3
         |Twitterの「いいね」からブックマークを作成
       br
-      p.subtitle.is-5 ご利用にはTwitterアカウントが必要です。
+      p.subtitle.is-5.mt-4 ご利用にはTwitterアカウントが必要です。
       = link_to "Twitterと連携してログイン(無料)", user_twitter_omniauth_authorize_path, method: :post, class: "button is-large is-link has-text-weight-semibold"
       p.mt-3
         = link_to "プライバシーポリシー", privacy_policies_path
         | 及び、
         = link_to "免責事項", disclaimers_path
         | を理解し同意したことと致します。
+.columns.my-5.mx-6.is-variable.is-8
+  .column.has-text-centered
+    = image_tag "twitter_like.svg", class: "feature__image"
+    h3.subtitle.is-3.has-text-weight-semibold
+      | Twitterで「いいね」
+    p.is-size-5
+      | Twitter上で、保存したい記事のリンクを含むツイートを「いいね」します。
+  .column.has-text-centered
+    = image_tag "bookmark.svg", class: "feature__image"
+    h3.subtitle.is-3.has-text-weight-semibold
+      | ブックマークリストを作成
+    p.is-size-5
+      | TwiLinksとTwitterを連携すると、「いいね」したツイートから記事のリンクだけを集めてブックマークリストを作成します。
