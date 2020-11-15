@@ -1,4 +1,4 @@
-section.hero.is-bold.has-background-link-light.mb-6
+section.hero.is-bold.is-light.mb-6
   .hero-body
     .container.has-text-centered
       h1.title.welcome_logo.has-text-grey-darker
@@ -8,10 +8,12 @@ section.hero.is-bold.has-background-link-light.mb-6
       br
       p.subtitle.is-5.mt-4
         span
-          | ご利用にはTwitterアカウントが必要です
+          | ご利用にはTwitterアカウントが必要です。
+      = link_to user_twitter_omniauth_authorize_path, method: :post, class: "button is-large is-link has-text-weight-semibold " do
+        span.mr-2
+          i.fab.fa-twitter
         span
-          i.fab.fa-twitter.fa-lg style="color:#3298dc;"
-      = link_to "Twitterと連携してログイン(無料)", user_twitter_omniauth_authorize_path, method: :post, class: "button is-large is-link has-text-weight-semibold "
+          | Twitterと連携してログイン(無料)
       p.mt-3
         = link_to "プライバシーポリシー", privacy_policies_path
         | 及び、
