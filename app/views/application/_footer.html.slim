@@ -1,5 +1,5 @@
-footer.footer.pt-5.pb-4.has-background-white
-  .content.has-text-centered
+footer.footer.pt-5.pb-4.has-background-white-ter.mt-6
+  .content.has-text-centered.mb-2
     span.mx-3
       = link_to "プライバシーポリシー", privacy_policies_path
     span.mx-3
@@ -10,8 +10,8 @@ footer.footer.pt-5.pb-4.has-background-white
     span.mr-2
       = Date.today.year
     span
-      a.mx-2 href="https://github.com/shibaaaa/twi_links" target="_blank" rel="noopener noreferrer"
+      = link_to "https://github.com/shibaaaa/twi_links", target: "_blank", rel: "noopener noreferrer", class: "mx-2"
         i.fab.fa-github.fa-lg style="color:darkgray;"
     span
-      a.mx-2 href="https://twitter.com/shibaaa66" target="_blank" rel="noopener noreferrer"
+      = link_to "https://twitter.com/shibaaa66", target: "_blank", rel: "noopener noreferrer", class: "mx-2"
         i.fab.fa-twitter.fa-lg style="color:darkgray;"
