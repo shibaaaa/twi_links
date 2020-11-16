@@ -1,13 +1,14 @@
 nav.navbar.is-fixed-top.has-shadow role="navigation" aria-label="main navigation"
   .navbar-brand
     .navbar-item.mx-5
-      = link_to "TwiLinks", root_path, class: "title is-2 has-text-grey-darker"
-    a.navbar-burger.burger role="button" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample"
-      span aria-hidden="true"
-      span aria-hidden="true"
-      span aria-hidden="true"
-  #navbarBasicExample.navbar-menu
+      = link_to "TwiLinks", root_path, class: "title is-3 has-text-grey-darker"
     - if user_signed_in?
+      a.navbar-burger.burger role="button" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample"
+        span aria-hidden="true"
+        span aria-hidden="true"
+        span aria-hidden="true"
+  - if user_signed_in?
+    #navbarBasicExample.navbar-menu
       .navbar-start
         = link_to "ツイートを読み込む", articles_path, method: :post, class: "navbar-item has-text-link has-text-weight-semibold"
       .navbar-end
