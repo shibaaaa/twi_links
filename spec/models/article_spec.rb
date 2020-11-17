@@ -3,7 +3,7 @@
 require "rails_helper"
 
 RSpec.describe Article, type: :model do
-  describe "#insert_from_tweets", vcr: "twitter_api_get_response" do
+  describe "::insert_from_tweets", vcr: "twitter_api_get_response" do
     let(:user_1) { create(:user) }
 
     it "いいねしたツイートからURLを保存できること" do
