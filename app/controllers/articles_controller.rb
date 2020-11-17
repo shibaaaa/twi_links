@@ -19,7 +19,7 @@ class ArticlesController < ApplicationController
 
   def destroy
     @article = current_user.articles.find(params[:id])
-    Article.unfavorite_tweet(@article.tweet_id, @article.user)
+    Article.unfavorite_tweet(@article)
     @article.destroy
     redirect_to articles_url, notice: "記事を削除しました。"
   end
