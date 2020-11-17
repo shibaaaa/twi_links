@@ -59,13 +59,13 @@ class Article < ApplicationRecord
 
       def fetch_og_image(target_url)
         if mechanize_agent.get(target_url).at('meta[property="og:image"]').nil?
-          "http://design-ec.com/d/e_others_50/m_e_others_500.jpg"
+          "no_image.svg"
         else
           mechanize_agent.get(target_url).at('meta[property="og:image"]')[:content]
         end
       rescue => e
         ErrorUtility.log_and_notify e
-        "http://design-ec.com/d/e_others_50/m_e_others_500.jpg"
+        "no_image.svg"
       end
 
       def fetch_liked_tweets(user)
