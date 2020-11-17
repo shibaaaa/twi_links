@@ -1,0 +1,4 @@
+#!/bin/bash
+
+bundle exec rubocop -A --config ./.rubocop.yml
+bundle exec slim-lint app/views -c config/slim_lint.yml
