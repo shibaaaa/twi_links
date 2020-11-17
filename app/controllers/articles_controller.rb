@@ -14,7 +14,10 @@ class ArticlesController < ApplicationController
 
   def create
     Article.insert_from_tweets(current_user)
-    redirect_to articles_url, notice: "いいねしたツイートから記事を取得しました。"
+    redirect_to root_path, notice: "いいねしたツイートから記事を取得しました。"
+  rescue Twitter::Error::TooManyRequests => e
+    redirect_to root_path, alert: "いいねの数が多すぎるため、読み込めませんでした。"
+    ErrorUtility.log_and_notify e
   end
 
   def destroy
