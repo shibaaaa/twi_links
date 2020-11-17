@@ -14,15 +14,16 @@ RSpec.describe "Articles", type: :system do
     end
   end
 
-  describe "記事生成", vcr: "twitter_api_get_response" do
-    it "いいねしたツイートから記事を生成" do
-      visit articles_path
-      click_on "ツイートを読み込む", match: :first
-      expect(page).to have_content "2020-10-05"
-      expect(page).to have_link "フィヨルドブートキャンプでの学習時間が1000時間を越えました - 柴ブログ"
+  describe "記事生成" do
+    context "いいねを全て取得できるとき", vcr: "twitter_api_get_response" do
+      it "いいねしたツイートから記事を生成" do
+        visit articles_path
+        click_on "ツイートを読み込む", match: :first
+        expect(page).to have_content "2020-10-05"
+        expect(page).to have_link "フィヨルドブートキャンプでの学習時間が1000時間を越えました - 柴ブログ"
+      end
     end
   end
-
 
   describe "記事削除" do
     it "選択した記事が削除される", vcr: "twitter_api_post_response" do

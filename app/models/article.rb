@@ -48,15 +48,21 @@ class Article < ApplicationRecord
 
       def fetch_title(target_url)
         fetch_article_page(target_url).title
+      rescue Mechanize::ResponseCodeError => e
+        ErrorUtility.log_and_notify e
+        "No Title"
       end
 
       def fetch_og_image(target_url)
+        no_image = "http://design-ec.com/d/e_others_50/m_e_others_500.jpg"
         if fetch_article_page(target_url).at('meta[property="og:image"]').nil?
-          # 対象のページのog:imageタグがなければ'No Image'画像を適用
-          "http://design-ec.com/d/e_others_50/m_e_others_500.jpg"
+          no_image
         else
           fetch_article_page(target_url).at('meta[property="og:image"]')[:content]
         end
+      rescue Mechanize::ResponseCodeError => e
+        ErrorUtility.log_and_notify e
+        no_image
       end
 
       def fetch_liked_tweets(user)
