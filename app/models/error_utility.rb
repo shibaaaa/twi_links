@@ -5,6 +5,5 @@ class ErrorUtility
     Rails.logger.error e.class
     Rails.logger.error e.message
     Rails.logger.error e.backtrace.join("\n")
-    Bugsnag.notify e
   end
 end

@@ -22,7 +22,7 @@ class Article < ApplicationRecord
           })
         end
       end
-      Article.insert_all(article_params, unique_by: :url)
+      Article.insert_all(article_params.compact, unique_by: :url)
     end
 
     def unfavorite_tweet(article)
@@ -40,33 +40,36 @@ class Article < ApplicationRecord
         client
       end
 
-      def fetch_article_page(target_url)
+      def mechanize_agent
         agent = Mechanize.new
         agent.user_agent_alias = "Windows Chrome"
-        agent.get(target_url)
+        agent
       end
 
       def fetch_title(target_url)
-        fetch_article_page(target_url).title
-      rescue Mechanize::ResponseCodeError => e
+        if mechanize_agent.get(target_url).title.nil?
+          "No Title"
+        else
+          mechanize_agent.get(target_url).title
+        end
+      rescue => e
         ErrorUtility.log_and_notify e
         "No Title"
       end
 
       def fetch_og_image(target_url)
-        no_image = "http://design-ec.com/d/e_others_50/m_e_others_500.jpg"
-        if fetch_article_page(target_url).at('meta[property="og:image"]').nil?
-          no_image
+        if mechanize_agent.get(target_url).at('meta[property="og:image"]').nil?
+          "http://design-ec.com/d/e_others_50/m_e_others_500.jpg"
         else
-          fetch_article_page(target_url).at('meta[property="og:image"]')[:content]
+          mechanize_agent.get(target_url).at('meta[property="og:image"]')[:content]
         end
-      rescue Mechanize::ResponseCodeError => e
+      rescue => e
         ErrorUtility.log_and_notify e
-        no_image
+        "http://design-ec.com/d/e_others_50/m_e_others_500.jpg"
       end
 
       def fetch_liked_tweets(user)
-        twitter_client(user).favorites
+        twitter_client(user).favorites(count: 200)
       end
   end
 end
