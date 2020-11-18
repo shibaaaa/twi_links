@@ -3,7 +3,7 @@
 class ArticlesController < ApplicationController
   before_action :authenticate_user!, only: %i(create destroy)
 
-  ARTICLES_NUM = 6
+  ARTICLES_NUM = 12
   def index
     if user_signed_in?
       @articles = current_user.articles.order(tweet_date: "DESC").page(params[:page]).per(ARTICLES_NUM)
