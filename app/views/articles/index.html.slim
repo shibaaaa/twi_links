@@ -10,7 +10,7 @@
             p.title.is-5
               = link_to "#{article.title}", "#{article.url}", target: "_blank", rel: "noopener noreferrer"
           .card-image
-            figure.image.is-16by9
+            figure.image.is-3by2
               = link_to image_tag(article.image_meta), "#{article.url}", target: "_blank", rel: "noopener noreferrer"
           footer.card-footer.article-footer
             = link_to "#{article.tweet_url}", target: "_blank", rel: "noopener noreferrer", class: "card-footer-item"
