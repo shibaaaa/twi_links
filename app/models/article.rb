@@ -6,17 +6,17 @@ class Article < ApplicationRecord
   class << self
     def insert_from_tweets(user)
       article_params = Parallel.map(fetch_liked_tweets(user), in_threads: 5) do |tweet|
-        unless tweet.attrs[:entities][:urls].empty?
-          article_url = tweet.attrs[:entities][:urls].first[:expanded_url]
+        if tweet.uris?
+          article_url = tweet.uris.first.expanded_url.to_s
           ({
             url: article_url,
             title: fetch_title(article_url),
             image_meta: fetch_og_image(article_url),
             user_id: user.id,
             tweet_id: tweet.id,
-            tweet_date: tweet.attrs[:created_at],
+            tweet_date: tweet.created_at,
             tweet_url: tweet.url.to_s,
-            tweet_user_meta: tweet.attrs[:user][:profile_image_url_https],
+            tweet_user_meta: tweet.user.profile_image_url_https.to_s,
             updated_at: DateTime.now,
             created_at: DateTime.now
           })
