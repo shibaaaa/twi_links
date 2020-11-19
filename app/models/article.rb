@@ -8,10 +8,11 @@ class Article < ApplicationRecord
       article_params = Parallel.map(fetch_liked_tweets(user), in_threads: 5) do |tweet|
         if tweet.uris?
           article_url = tweet.uris.first.expanded_url.to_s
+          page = mechanize_agent.get(article_url)
           {
             url: article_url,
-            title: fetch_title(article_url),
-            image_meta: fetch_og_image(article_url),
+            title: fetch_title(page),
+            image_meta: fetch_og_image(page),
             user_id: user.id,
             tweet_id: tweet.id,
             tweeted_at: tweet.created_at,
@@ -46,23 +47,16 @@ class Article < ApplicationRecord
         agent
       end
 
-      def fetch_title(target_url)
-        if mechanize_agent.get(target_url).title.nil?
-          "No Title"
-        else
-          mechanize_agent.get(target_url).title
-        end
+      def fetch_title(page)
+        page.title || "No Title"
       rescue => e
         ErrorUtility.log_and_notify e
         "No Title"
       end
 
-      def fetch_og_image(target_url)
-        if mechanize_agent.get(target_url).at('meta[property="og:image"]').nil?
-          "no_image.svg"
-        else
-          mechanize_agent.get(target_url).at('meta[property="og:image"]')[:content]
-        end
+      def fetch_og_image(page)
+        og_image = page.at('meta[property="og:image"]')
+        og_image ? og_image[:content] : "no_image.svg"
       rescue => e
         ErrorUtility.log_and_notify e
         "no_image.svg"
