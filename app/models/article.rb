@@ -18,8 +18,8 @@ class Article < ApplicationRecord
             tweeted_at: tweet.created_at,
             tweet_url: tweet.url.to_s,
             tweet_user_meta: tweet.user.profile_image_url_https.to_s,
-            updated_at: DateTime.now,
-            created_at: DateTime.now
+            updated_at: Time.current,
+            created_at: Time.current
           }
         end
       end
