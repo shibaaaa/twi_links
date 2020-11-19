@@ -13,12 +13,15 @@
             figure.image.is-3by2
               = link_to image_tag(article.image_meta), "#{article.url}", target: "_blank", rel: "noopener noreferrer"
           footer.card-footer.article-footer
-            = link_to "#{article.tweet_url}", target: "_blank", rel: "noopener noreferrer", class: "card-footer-item"
-              figure.image.is-32x32
-                = image_tag "#{article.tweet_user_meta}", class: "is-rounded"
-            = link_to "関連ツイートへ", "https://twitter.com/search?q=#{article.url}&src=typed_query", target: "_blank", rel: "noopener noreferrer", class: "card-footer-item"
-            = link_to article_path(article), method: :delete, data: { confirm: "削除してよろしいですか？" }, class: "card-footer-item"
-              i.fas.fa-trash-alt.trash-icon
+            .card-footer-item
+              = link_to "#{article.tweet_url}", target: "_blank", rel: "noopener noreferrer"
+                figure.image.is-32x32
+                  = image_tag "#{article.tweet_user_meta}", class: "is-rounded"
+            .card-footer-item
+              = link_to "関連ツイートへ", "https://twitter.com/search?q=#{article.url}&src=typed_query", target: "_blank", rel: "noopener noreferrer"
+            .card-footer-item
+              = link_to article_path(article), method: :delete, data: { confirm: "削除してよろしいですか？" }
+                i.fas.fa-trash-alt.trash-icon
   = paginate @articles
 -else
   article.message.is-info.is-medium
