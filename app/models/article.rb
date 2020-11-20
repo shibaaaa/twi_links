@@ -14,7 +14,7 @@ class Article < ApplicationRecord
             image_meta: fetch_og_image(article_url),
             user_id: user.id,
             tweet_id: tweet.id,
-            tweet_date: tweet.created_at,
+            tweeted_at: tweet.created_at,
             tweet_url: tweet.url.to_s,
             tweet_user_meta: tweet.user.profile_image_url_https.to_s,
             updated_at: DateTime.now,
