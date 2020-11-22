@@ -8,11 +8,12 @@ class Article < ApplicationRecord
       article_params = Parallel.map(fetch_liked_tweets(user), in_threads: 5) do |tweet|
         if tweet.uris?
           article_url = tweet.uris.first.expanded_url.to_s
+          crawler = Scrape.new(article_url)
 
           begin
-            page = Scrape.access_page(article_url)
-            article_title = Scrape.fetch_title(page)
-            article_image = Scrape.fetch_og_image(page)
+            page = crawler.access_page
+            article_title = crawler.fetch_title(page)
+            article_image = crawler.fetch_og_image(page)
           rescue Mechanize::ResponseCodeError => e
             if e.response_code = 404
               next

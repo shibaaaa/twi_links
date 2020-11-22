@@ -3,25 +3,28 @@
 require "rails_helper"
 
 RSpec.describe Scrape, type: :model do
-  describe "::fetch_title" do
+  describe "#fetch_title" do
     it "URLからタイトルを取得できること" do
-      page = Scrape.access_page("http://example.com/")
-      expect(Scrape.fetch_title(page)).to eq "Example Domain"
+      crawler = Scrape.new("http://example.com/")
+      page = crawler.access_page
+      expect(crawler.fetch_title(page)).to eq "Example Domain"
     end
   end
 
-  describe "::fetch_og_image" do
+  describe "#fetch_og_image" do
     context "任意のページにog:imageタグが存在するとき" do
       it "og:imageタグの要素を取得できること" do
-        page = Scrape.access_page("https://shibaaa647.hatenablog.com/")
-        expect(Scrape.fetch_og_image(page)).to eq "https://cdn.blog.st-hatena.com/images/theme/og-image-1500.png"
+        crawler = Scrape.new("https://shibaaa647.hatenablog.com/")
+        page = crawler.access_page
+        expect(crawler.fetch_og_image(page)).to eq "https://cdn.blog.st-hatena.com/images/theme/og-image-1500.png"
       end
     end
 
-    context "任意のページog:imageタグが存在しないとき" do
+    context "任意のページにog:imageタグが存在しないとき" do
       it "'no_image.svg'が返ること" do
-        page = Scrape.access_page("http://example.com/")
-        expect(Scrape.fetch_og_image(page)).to eq "no_image.svg"
+        crawler = Scrape.new("http://example.com/")
+        page = crawler.access_page
+        expect(crawler.fetch_og_image(page)).to eq "no_image.svg"
       end
     end
   end
