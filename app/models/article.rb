@@ -15,7 +15,7 @@ class Article < ApplicationRecord
             article_title = crawler.fetch_title(page)
             article_image = crawler.fetch_og_image(page)
           rescue Mechanize::ResponseCodeError => e
-            if e.response_code = 404
+            if e.response_code == "404"
               next
             else
               article_title = "Not Found"
