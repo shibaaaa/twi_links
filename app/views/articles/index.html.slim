@@ -24,11 +24,12 @@
                 i.fas.fa-trash-alt.trash-icon
   = paginate @articles
 -else
-  article.message.is-info.is-medium
-    .message-body
-      | まだ記事が登録されていません。
+  article.message.is-info.is-medium.is-radiusless
+    .message-body.has-text-centered
+      | これからブックマークを作成します！
       br
-      | 以下のボタンをクリックするとTwitterでいいねしたツイートを読み込んで記事を登録します。
+      | 「ツイートを読み込む」ボタンをクリックして、
+      | ブックマークを作成しましょう。
       br
       br
       = link_to "ツイートを読み込む", articles_path, method: :post, class: "button is-info is-medium"
