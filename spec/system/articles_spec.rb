@@ -10,7 +10,7 @@ RSpec.describe "Articles", type: :system do
   describe "記事一覧ページ" do
     it "記事がないこと" do
       visit articles_path
-      expect(page).to have_content "まだ記事が登録されていません。"
+      expect(page).to have_content "これからブックマークを作成します！"
     end
   end
 
