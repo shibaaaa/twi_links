@@ -24,7 +24,7 @@
                 i.fas.fa-trash-alt.trash-icon
   = paginate @articles
 -else
-  article.message.is-info.is-medium.is-radiusless
+  article.message.is-link.is-medium.mx-6.mt-6
     .message-body.has-text-centered
       | これからブックマークを作成します！
       br
@@ -32,4 +32,8 @@
       | ブックマークを作成しましょう。
       br
       br
-      = link_to "ツイートを読み込む", articles_path, method: :post, class: "button is-info is-medium"
+      = link_to articles_path, method: :post, class: "button is-link is-medium"
+        span.mr-2
+          i.fab.fa-twitter
+        span
+          | ツイートを読み込む

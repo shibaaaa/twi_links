@@ -1,20 +1,20 @@
-section.hero.is-bold.is-light.mb-6
+section.hero.mb-6
   .hero-body
     .container.has-text-centered
-      h1.title.welcome_logo.has-text-grey-darker
-        |TwiLinks
-      h2.subtitle.is-3.has-text-weight-medium
-        |Twitterの「いいね」からブックマークを作成
+      h1.title.welcome_logo
+        | TwiLinks
+      h2.subtitle.is-4.has-text-weight-medium
+        | Twitterで「いいね」を付けたツイートからURLを抽出してリスト化
       br
-      p.subtitle.is-5.mt-4
+      p.subtitle.is-6.mt-4
         span
           | ご利用にはTwitterアカウントが必要です。
-      = link_to user_twitter_omniauth_authorize_path, method: :post, class: "button is-medium is-link has-text-weight-semibold " do
+      = link_to user_twitter_omniauth_authorize_path, method: :post, class: "button is-large is-link has-text-weight-semibold px-6" do
         span.mr-2
           i.fab.fa-twitter
         span
-          | Twitterと連携してログイン(無料)
-      p.mt-3
+          | ログイン(無料)
+      p.mt-3.is-size-7
         = link_to "プライバシーポリシー", privacy_policies_path
         | 及び、
         = link_to "免責事項", disclaimers_path
