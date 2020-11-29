@@ -1,7 +1,10 @@
 .welcome_logo {
   line-height: 1.2;
-  font-size: 4.5rem;
+  font-size: 6rem;
   text-indent: -0.7rem;
+  font-family: 'Montserrat', sans-serif;
+  letter-spacing: 3px;
+  text-shadow: 0px 5px 1px silver;
 }
 
 .feature__image {
@@ -15,4 +18,6 @@
   }
 }
 
-
+.hero {
+  background-image: linear-gradient(to top, #fff1eb 0%, #ace0f9 100%);
+}
