@@ -43,10 +43,10 @@ group :development, :test do
 end
 
 group :development do
-  gem "web-console", ">= 3.3.0"
-  gem "listen", "~> 3.2"
+  gem "web-console"
+  gem "listen"
   gem "spring"
-  gem "spring-watcher-listen", "~> 2.0.0"
+  gem "spring-watcher-listen"
 
   # Not default
   gem "slim_lint"
