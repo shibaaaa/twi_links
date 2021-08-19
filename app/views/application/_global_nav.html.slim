@@ -7,7 +7,8 @@ nav.navbar role="navigation" aria-label="main navigation"
       span aria-hidden="true"
       span aria-hidden="true"
   #navbarBasicExample.navbar-menu
-    .navbar-start
-      = link_to "ツイートを読み込む", articles_path, method: :post, class: "navbar-item has-text-link has-text-weight-semibold"
+    - if @articles.present?
+      .navbar-start
+        = link_to "ツイートを読み込む", articles_path, method: :post, class: "navbar-item has-text-link has-text-weight-semibold"
     .navbar-end
       = link_to "ログアウト", destroy_user_session_path, method: :delete, class: "navbar-item has-text-black-bis"
