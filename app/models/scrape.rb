@@ -1,10 +1,13 @@
 # frozen_string_literal: true
 
 class Scrape
+  TIMEOUT_SEC = 3
   class << self
     def mechanize_agent
       agent = Mechanize.new
       agent.user_agent_alias = "Windows Chrome"
+      agent.open_timeout = TIMEOUT_SEC
+      agent.read_timeout = TIMEOUT_SEC
       agent
     end
 
