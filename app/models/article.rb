@@ -4,9 +4,9 @@ class Article < ApplicationRecord
   belongs_to :user
 
   class << self
-    def insert_from_tweets(user)
+    def insert_from_tweets(tweets, user_id)
       crawler = Scrape.mechanize_agent
-      article_params = Parallel.map(fetch_liked_tweets(user), in_threads: 10) do |tweet|
+      article_params = Parallel.map(tweets, in_threads: 10) do |tweet|
         next if tweet.uris.blank?
         article_url = tweet.uris.first.expanded_url.to_s
 
@@ -31,7 +31,7 @@ class Article < ApplicationRecord
           url:             article_url,
           title:           article_title,
           image_meta:      article_image,
-          user_id:         user.id,
+          user_id:         user_id,
           tweet_id:        tweet.id,
           tweeted_at:      tweet.created_at,
           tweet_url:       tweet.url.to_s,
@@ -43,24 +43,5 @@ class Article < ApplicationRecord
 
       Article.insert_all(article_params.compact, unique_by: :url)
     end
-
-    def unfavorite_tweet(article)
-      twitter_client(article.user).unfavorite(article.tweet_id)
-    end
-
-    private
-      def twitter_client(user)
-        client = Twitter::REST::Client.new do |config|
-          config.consumer_key        = ENV["TWITTER_API_KEY"]
-          config.consumer_secret     = ENV["TWITTER_API_SECRET"]
-          config.access_token        = user.access_token
-          config.access_token_secret = user.access_token_secret
-        end
-        client
-      end
-
-      def fetch_liked_tweets(user)
-        twitter_client(user).favorites(count: 200)
-      end
   end
 end
