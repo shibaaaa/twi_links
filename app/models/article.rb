@@ -6,7 +6,7 @@ class Article < ApplicationRecord
   class << self
     def insert_from_tweets(user)
       crawler = Scrape.mechanize_agent
-      article_params = Parallel.map(fetch_liked_tweets(user), in_threads: 5) do |tweet|
+      article_params = Parallel.map(fetch_liked_tweets(user), in_threads: 10) do |tweet|
         next if tweet.uris.blank?
         article_url = tweet.uris.first.expanded_url.to_s
 
