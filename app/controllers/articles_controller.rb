@@ -13,7 +13,8 @@ class ArticlesController < ApplicationController
   end
 
   def create
-    Article.insert_from_tweets(current_user)
+    liked_tweets = TwitterApi.new(current_user.access_token, current_user.access_token_secret).fetch_liked_tweets
+    Article.insert_from_tweets(liked_tweets, current_user.id)
     redirect_to root_path, notice: "いいねしたツイートから記事を取得しました。"
   rescue Twitter::Error::TooManyRequests => e
     redirect_to root_path, alert: "いいねの数が多すぎるため、読み込めませんでした。"
