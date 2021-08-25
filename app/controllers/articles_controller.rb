@@ -23,7 +23,7 @@ class ArticlesController < ApplicationController
 
   def destroy
     @article = current_user.articles.find(params[:id])
-    Article.unfavorite_tweet(@article)
+    TwitterApi.new(current_user.access_token, current_user.access_token_secret).unfavorite_tweet(@article.tweet_id)
     @article.destroy
     redirect_to articles_url, notice: "記事を削除しました。"
   end
