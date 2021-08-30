@@ -8,7 +8,7 @@ class User < ApplicationRecord
 
   class << self
     def find_for_twitter_oauth(auth)
-      auth_user = User.find_or_create_by(uid: auth.uid, provider: auth. provider) do |user|
+      auth_user = User.find_or_create_by(uid: auth.uid, provider: auth.provider) do |user|
         user.name                = auth.info.nickname
         user.email               = dummy_email(auth)
         user.password            = Devise.friendly_token[0, 20]
