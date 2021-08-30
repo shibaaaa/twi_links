@@ -28,6 +28,7 @@ gem "bulma-rails"
 gem "font-awesome-sass"
 gem "kaminari"
 gem "parallel"
+gem "meta-tags"
 
 group :development, :test do
   gem "byebug", platforms: [:mri, :mingw, :x64_mingw]
