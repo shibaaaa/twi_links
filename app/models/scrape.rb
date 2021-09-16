@@ -2,12 +2,14 @@
 
 class Scrape
   TIMEOUT_SEC = 3
+
   class << self
     def mechanize_agent
-      agent = Mechanize.new
-      agent.user_agent_alias = "Windows Chrome"
-      agent.open_timeout = TIMEOUT_SEC
-      agent.read_timeout = TIMEOUT_SEC
+      agent = Mechanize.new do |a|
+        a.user_agent_alias = "Windows Chrome"
+        a.open_timeout     = TIMEOUT_SEC
+        a.read_timeout     = TIMEOUT_SEC
+      end
       agent
     end
 
