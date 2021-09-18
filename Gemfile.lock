@@ -433,7 +433,6 @@ DEPENDENCIES
   spring
   spring-watcher-listen
   twitter
-  tzinfo-data
   vcr
   web-console
   webdrivers
