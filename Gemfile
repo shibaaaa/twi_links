@@ -43,6 +43,7 @@ group :development, :test do
   gem "vcr"
   gem "pry-byebug"
   gem "pry-rails"
+  gem "dead_end"
 end
 
 group :development do
