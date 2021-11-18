@@ -3,12 +3,12 @@ jobs:
   build:
     parallelism: 3
     docker:
-      - image: cimg/ruby:3.0.2-node
+      - image: cimg/ruby:3.0.2-browsers
         environment:
           PGHOST: 127.0.0.1
           PGUSER: twilinks
           RAILS_ENV: test
-      - image: cimg/postgres:13.0
+      - image: cimg/postgres:12.8
         environment:
           POSTGRES_USER: twilinks
           POSTGRES_DB: twilinks_test
