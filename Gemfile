@@ -42,7 +42,6 @@ group :development, :test do
   gem "webmock"
   gem "vcr"
   gem "pry-byebug"
-  gem "pry-rails"
   gem "dead_end"
 end
 
