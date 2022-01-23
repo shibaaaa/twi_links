@@ -14,23 +14,15 @@ class Article < ApplicationRecord
           page = crawler.access_page(article_url)
           article_title = crawler.fetch_title(page)
           article_image = crawler.fetch_og_image(page)
-        rescue Mechanize::ResponseCodeError => e
-          if e.response_code == "404"
-            next
-          else
-            article_title = "Not Found"
-            article_image = "no_image.svg"
-          end
         rescue => e
+          next if e.response_code == "404"
           ErrorUtility.log e
-          article_title = "Not Found"
-          article_image = "no_image.svg"
         end
 
         {
           url:             article_url,
-          title:           article_title,
-          image_meta:      article_image,
+          title:           article_title || "Not Found",
+          image_meta:      article_image || "no_image.svg",
           user_id:         user_id,
           tweet_id:        tweet.id,
           tweeted_at:      tweet.created_at,
