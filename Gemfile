@@ -49,7 +49,6 @@ group :development do
   gem "web-console"
   gem "listen"
   gem "spring"
-  gem "spring-watcher-listen"
 
   # Not default
   gem "slim_lint"
