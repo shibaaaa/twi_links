@@ -3,9 +3,9 @@
 source "https://rubygems.org"
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby "3.0.3"
+ruby "3.1.0"
 
-gem "rails", "6.1.4.4"
+gem "rails", "7.0.2"
 gem "puma", "~> 4.1"
 gem "sass-rails"
 gem "webpacker"
@@ -40,7 +40,7 @@ group :development, :test do
   gem "selenium-webdriver"
   gem "webdrivers"
   gem "webmock"
-  gem "vcr"
+  gem "vcr", github: "vcr/vcr"
   gem "pry-byebug", ">= 3.9.0"
   gem "dead_end"
 end

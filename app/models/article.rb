@@ -23,7 +23,7 @@ class Article < ApplicationRecord
           url:             article_url,
           title:           article_title || "Not Found",
           image_meta:      article_image || "no_image.svg",
-          user_id:         user_id,
+          user_id:,
           tweet_id:        tweet.id,
           tweeted_at:      tweet.created_at,
           tweet_url:       tweet.url.to_s,
