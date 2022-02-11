@@ -1,2 +1,4 @@
 --require spec_helper
 --require dead_end
+--color
+--format documentation
