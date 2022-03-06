@@ -14,6 +14,8 @@ class Article < ApplicationRecord
           page = crawler.access_page(article_url)
           article_title = crawler.fetch_title(page)
           article_image = crawler.fetch_og_image(page)
+        rescue Timeout::Error
+          next
         rescue => e
           next if e.response_code == "404"
           ErrorUtility.log e
