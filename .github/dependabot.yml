@@ -1,0 +1,19 @@
+version: 2
+updates:
+  - package-ecosystem: "bundler"
+    directory: "/"
+    target-branch: "main"
+    schedule:
+      interval: "weekly"
+      day: "wednesday"
+      timezone: "Asia/Tokyo"
+    versioning-strategy: "lockfile-only"
+    open-pull-requests-limit: 3
+  - package-ecosystem: "npm"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "wednesday"
+      timezone: "Asia/Tokyo"
+    versioning-strategy: "lockfile-only"
+    open-pull-requests-limit: 3
