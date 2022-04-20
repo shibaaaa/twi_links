@@ -40,7 +40,7 @@ group :development, :test do
   gem "selenium-webdriver"
   gem "webdrivers"
   gem "webmock"
-  gem "vcr", github: "vcr/vcr"
+  gem "vcr"
   gem "pry-byebug", ">= 3.9.0"
   gem "dead_end"
 end
