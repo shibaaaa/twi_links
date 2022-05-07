@@ -125,8 +125,8 @@ GEM
     ffi-compiler (1.0.1)
       ffi (>= 1.0.0)
       rake
-    font-awesome-sass (5.15.1)
-      sassc (>= 1.11)
+    font-awesome-sass (6.1.1)
+      sassc (~> 2.0)
     globalid (1.0.0)
       activesupport (>= 5.0)
     hashdiff (1.0.1)
