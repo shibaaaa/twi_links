@@ -219,9 +219,9 @@ GEM
       mini_portile2 (~> 2.8.0)
       racc (~> 1.4)
     oauth (0.5.8)
-    omniauth (2.0.4)
+    omniauth (2.1.0)
       hashie (>= 3.4.6)
-      rack (>= 1.6.2, < 3)
+      rack (>= 2.2.3)
       rack-protection
     omniauth-oauth (1.2.0)
       oauth
@@ -248,7 +248,7 @@ GEM
       nio4r (~> 2.0)
     racc (1.6.0)
     rack (2.2.3)
-    rack-protection (2.1.0)
+    rack-protection (2.2.0)
       rack
     rack-proxy (0.7.2)
       rack
