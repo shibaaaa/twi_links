@@ -6,7 +6,8 @@ class Article < ApplicationRecord
   class << self
     def insert_from_tweets(tweets, user_id)
       crawler = Scrape.new
-      article_params = Parallel.map(tweets, in_threads: 10) do |tweet|
+      article_params = []
+      Parallel.each(tweets, in_threads: 10) do |tweet|
         next if tweet.uris.blank?
         article_url = tweet.uris.first.expanded_url.to_s
 
@@ -21,7 +22,7 @@ class Article < ApplicationRecord
           ErrorUtility.log e
         end
 
-        {
+        article_params << {
           url:             article_url,
           title:           article_title || "Not Found",
           image_meta:      article_image || "no_image.svg",
@@ -35,7 +36,7 @@ class Article < ApplicationRecord
         }
       end
 
-      Article.insert_all(article_params.compact, unique_by: :url)
+      Article.insert_all(article_params, unique_by: :url)
     end
   end
 end
