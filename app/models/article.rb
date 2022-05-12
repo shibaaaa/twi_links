@@ -5,16 +5,15 @@ class Article < ApplicationRecord
 
   class << self
     def insert_from_tweets(tweets, user_id)
-      crawler = Scrape.new
       article_params = []
       Parallel.each(tweets, in_threads: 10) do |tweet|
         next if tweet.uris.blank?
         article_url = tweet.uris.first.expanded_url.to_s
 
         begin
-          page = crawler.access_page(article_url)
-          article_title = crawler.fetch_title(page)
-          article_image = crawler.fetch_og_image(page)
+          page = Scraper.access_page(article_url)
+          article_title = Scraper.fetch_title(page)
+          article_image = Scraper.fetch_og_image(page)
         rescue Timeout::Error
           next
         rescue => e
@@ -24,8 +23,8 @@ class Article < ApplicationRecord
 
         article_params << {
           url:             article_url,
-          title:           article_title || "Not Found",
-          image_meta:      article_image || "no_image.svg",
+          title:           article_title,
+          image_meta:      article_image,
           user_id:,
           tweet_id:        tweet.id,
           tweeted_at:      tweet.created_at,
