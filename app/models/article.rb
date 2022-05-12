@@ -6,36 +6,39 @@ class Article < ApplicationRecord
   class << self
     def insert_from_tweets(tweets, user_id)
       crawler = Scrape.new
-      article_params = Parallel.map(tweets, in_threads: 10) do |tweet|
+      article_params = []
+      Parallel.each(tweets, in_threads: 10) do |tweet|
         next if tweet.uris.blank?
         article_url = tweet.uris.first.expanded_url.to_s
 
         begin
           page = crawler.access_page(article_url)
-          article_title = crawler.fetch_title(page)
-          article_image = crawler.fetch_og_image(page)
-        rescue Timeout::Error
-          next
         rescue => e
-          next if e.response_code == "404"
+          next if e.class == Timeout::Error || e.response_code == "404"
           ErrorUtility.log e
         end
 
+        article_params << self.build_params(article_url, crawler, page, user_id, tweet)
+      end
+
+      Article.insert_all(article_params, unique_by: :url)
+    end
+
+    private
+      def build_params(article_url, crawler, page, user_id, tweet)
+        now = Time.current
         {
           url:             article_url,
-          title:           article_title || "Not Found",
-          image_meta:      article_image || "no_image.svg",
+          title:           crawler.fetch_title(page),
+          image_meta:      crawler.fetch_og_image(page),
           user_id:,
           tweet_id:        tweet.id,
           tweeted_at:      tweet.created_at,
           tweet_url:       tweet.url.to_s,
           tweet_user_meta: tweet.user.profile_image_url_https.to_s,
-          updated_at:      Time.current,
-          created_at:      Time.current
+          updated_at:      now,
+          created_at:      now
         }
       end
-
-      Article.insert_all(article_params.compact, unique_by: :url)
-    end
   end
 end
