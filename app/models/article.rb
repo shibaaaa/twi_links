@@ -23,12 +23,11 @@ class Article < ApplicationRecord
 
       return if article_params.empty?
 
-      Article.insert_all(article_params, unique_by: :url)
+      Article.insert_all(article_params, unique_by: :url, record_timestamps: true)
     end
 
     private
       def build_params(article_url, crawler, page, user_id, tweet)
-        now = Time.current
         {
           url:             article_url,
           title:           crawler.fetch_title(page),
@@ -38,8 +37,6 @@ class Article < ApplicationRecord
           tweeted_at:      tweet.created_at,
           tweet_url:       tweet.url.to_s,
           tweet_user_meta: tweet.user.profile_image_url_https.to_s,
-          updated_at:      now,
-          created_at:      now
         }
       end
 
