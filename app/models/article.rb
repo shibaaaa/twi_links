@@ -14,12 +14,14 @@ class Article < ApplicationRecord
         begin
           page = crawler.access_page(article_url)
         rescue => e
-          next if e.class == Timeout::Error || e.response_code == "404"
+          next if timeout?(e) || e.response_code == "404"
           ErrorUtility.log e
         end
 
         article_params << self.build_params(article_url, crawler, page, user_id, tweet)
       end
+
+      return if article_params.empty?
 
       Article.insert_all(article_params, unique_by: :url)
     end
@@ -39,6 +41,11 @@ class Article < ApplicationRecord
           updated_at:      now,
           created_at:      now
         }
+      end
+
+      def timeout?(error)
+        timeout_errors = [Timeout::Error, Net::ReadTimeout]
+        timeout_errors.include?(error.class)
       end
   end
 end
