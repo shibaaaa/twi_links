@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-ActiveRecord::Schema[7.0].define(version: 2022_08_12_050843) do
+ActiveRecord::Schema[7.0].define(version: 2022_08_12_052304) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -15,9 +15,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_12_050843) do
     t.string "tweet_id", null: false
     t.string "title", null: false
     t.text "image_meta", null: false
-    t.index ["tweeted_at"], name: "index_articles_on_tweeted_at"
     t.index ["url"], name: "index_articles_on_url", unique: true
-    t.index ["user_id"], name: "index_articles_on_user_id"
+    t.index ["user_id", "tweeted_at"], name: "index_articles_on_user_id_and_tweeted_at"
   end
 
   create_table "users", force: :cascade do |t|
