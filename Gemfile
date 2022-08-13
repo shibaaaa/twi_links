@@ -9,7 +9,6 @@ gem "rails", "7.0.3.1"
 gem "puma", "~> 5.6"
 gem "sass-rails"
 gem "webpacker"
-gem "jbuilder"
 gem "bootsnap", require: false
 
 # Not default
