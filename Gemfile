@@ -41,7 +41,7 @@ group :development, :test do
   gem "webmock"
   gem "vcr"
   gem "pry-byebug", ">= 3.9.0"
-  gem "dead_end"
+  gem "syntax_suggest"
 end
 
 group :development do
