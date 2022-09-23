@@ -97,7 +97,6 @@ GEM
     crack (0.4.5)
       rexml
     crass (1.0.6)
-    dead_end (4.0.0)
     devise (4.8.1)
       bcrypt (~> 3.0)
       orm_adapter (~> 0.1)
@@ -366,6 +365,7 @@ GEM
       activesupport (>= 5.2)
       sprockets (>= 3.0.0)
     strscan (3.0.4)
+    syntax_suggest (0.0.1)
     temple (0.8.2)
     thor (1.2.1)
     thread_safe (0.3.6)
@@ -429,7 +429,6 @@ DEPENDENCIES
   bulma-rails
   byebug
   capybara
-  dead_end
   devise
   devise-i18n
   dotenv-rails
@@ -458,6 +457,7 @@ DEPENDENCIES
   slim-rails
   slim_lint
   spring
+  syntax_suggest
   twitter
   vcr
   web-console
