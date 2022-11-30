@@ -365,7 +365,7 @@ GEM
       activesupport (>= 5.2)
       sprockets (>= 3.0.0)
     strscan (3.0.4)
-    syntax_suggest (0.0.1)
+    syntax_suggest (1.0.1)
     temple (0.8.2)
     thor (1.2.1)
     thread_safe (0.3.6)
